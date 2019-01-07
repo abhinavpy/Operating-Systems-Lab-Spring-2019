@@ -6,7 +6,7 @@
 int main()
 {
 	int file = 0;
-	if((file = open("test.txt", O_RDONLY)) < -1)
+	if((file = open("test.txt", O_RDONLY | O_RDWR)) < -1)
 		return 1;
 
 	char buffer[19];

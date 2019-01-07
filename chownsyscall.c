@@ -6,7 +6,7 @@
 int main()
 {
 	int access = chown("file.txt", -1, -1);
-	if(access < 0)\
+	if(access < 0)
 	{
 		perror("Result");
 	}
