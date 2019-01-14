@@ -1,5 +1,4 @@
 #include<bits/stdc++.h>
-
 using namespace std;
 
 void findwaitingTime(int process[], int at[], int bt[], int n, int wt[]) {
