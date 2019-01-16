@@ -1,32 +1,4 @@
 # Operating-Systems-Lab-Spring-2019
 List of all programs implemented during the Operating Systems Lab course of Spring 2019
 ## Lab - 1 System Calls
-* creat()
-* open()
-* close()
-* read()
-* write()
-* lseek()
-* dup()
-* link()
-* unlink()
-* access()
-* chmod()
-* chown()
-* umask()
-* ioctl()
-* execl()
-* fork()
-* wait()
-* exit()
-* getuid()
-* geteuid()
-* getgid()
-* getegid()
-* getpid()
-* getppid()
-* signal()
-* kill()
-* alarm()
-* chdir()
-
+## Lab - 2 Process Scheduling
