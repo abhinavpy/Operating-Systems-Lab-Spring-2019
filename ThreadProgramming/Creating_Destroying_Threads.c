@@ -12,6 +12,8 @@ gcc hello.c -o hello -lpthread
 
 #include<stdio.h>   
 #include<pthread.h> /*pthread functions and data structures*/
+#include<stdlib.h>
+#include<unistd.h>
 
 /* function to be executed by the new thread */
 void* PrintHello(void* data)
@@ -20,14 +22,18 @@ void* PrintHello(void* data)
     
     pthread_detach(pthread_self());
     printf("Hello from new thread - got %d\n", my_data);
-    pthread_exit(NULL);         //Terminate the thread.
+
+    sleep(3);
+    //pthread_exit(NULL);         //Terminate the thread.
 }
 
 
 int main(int argc, char* argv) {
     int rc; //return value
-    pthread_t threadid; //thread's id just an integer
+    pthread_t threadid, tid; //thread's id just an integer
     int t = 11; //data passed into the new thread
+
+    tid = pthread_self();
 
     //Create a new thread that will execute print "helloworld"
     rc = pthread_create(&threadid, NULL, PrintHello, (void*)t);
@@ -37,7 +43,8 @@ int main(int argc, char* argv) {
         exit(1);
     }
 
-    printf("\n Create new thread (%u) ... \n", thread_id);
+    //sleep(3);
+    printf("\n The current thread id is %d, Create new thread (%u) ... \n", tid, threadid);
 
     pthread_exit(NULL);     //Terminate the thread.
 
