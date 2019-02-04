@@ -86,6 +86,7 @@ int main(void){
 
 	sem_init(&buf_mutex,0,1);
 	sem_init(&fill_count,0,0);
+	sem_init(&empty_count,0,buf_len);
 
 	printf("Enter the number of Producers:");
 	scanf("%d",&prod_count);
@@ -99,7 +100,7 @@ int main(void){
 	scanf("%d",&buf_len);
 	buf = (int*) malloc(buf_len*sizeof(int));
 
-	sem_init(&empty_count,0,buf_len);
+	
 
 	for(i=0;i<prod_count;i++){
 		err = pthread_create(producers+i,NULL,&producer,NULL);
