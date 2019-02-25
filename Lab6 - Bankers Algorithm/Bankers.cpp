@@ -29,5 +29,26 @@ int main() {
         printf("\n");
     }
 
+    int total[nRes];
+    printf("Enter the total resources present:\n");
+    for(int i=0;i<nRes;++i)
+        scanf("%d", &total[i]);
     
+    int sum = 0;
+    int work[nRes];
+    for(int i=0;i<nRes;++i) {
+        sum = 0;
+        for(int j=0;j<nProc;++j) {
+            sum += need[i][j];
+        }
+        work[i] = sum;
+    }
+
+    int finish[nProc];
+    for(int i=0;i<nProc;++i)
+        finish[i] = 0;
+
+    for(int i=0;i<nProc;++i)
+        for(int j=0;j<nRes;++j)
+            if(finish[i] == 1 ||  
 }
