@@ -39,7 +39,7 @@ int main() {
     for(int i=0;i<nRes;++i) {
         sum = 0;
         for(int j=0;j<nProc;++j) {
-            sum += allocation[i][j];
+            sum += allocation[j][i];
         }
         work[i] = sum;
     }
@@ -56,22 +56,29 @@ int main() {
     for(int i=0;i<nRes;++i)
     	printf("%d ", work[i]);
 
+    printf("\n");
+
     int finish[nProc];
     for(int i=0;i<nProc;++i)
         finish[i] = 0;
 
     printf("The order in which resources are executed are:\n");
-    for(int i=0;i<nProc;++i) {
-        for(int j=0;j<nRes;++j) {
-            if(finish[i] == 1 || need[i][j] > work[j]) {
-            	break;
-            } 
-            else {
-            	finish[i] = 1;
-            	printf("P%d -> ", i);
-            	for(int k=0;k<nRes;++k)
-            		work[k] = allocation[i][k] + work[k];
-            }
-        }
-    }
+    int temp = 0;
+    while(temp < nProc) {
+	    for(int i=0;i<nProc;++i) {
+	        for(int j=0;j<nRes;++j) {
+	            if(finish[i] == 1 || need[i][j] > work[j]) {
+	            	break;
+	            } 
+	            else {
+	            	++temp;
+	            	finish[i] = 1;
+	            	printf("P%d -> ", i);
+	            	for(int k=0;k<nRes;++k)
+	            		work[k] = allocation[i][k] + work[k];
+	            }
+	        }
+	    }
+	}
+	printf("\n");
 }
