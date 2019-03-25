@@ -127,23 +127,14 @@ void findavgTime(Process proc[], int n)
         << (float)total_tat / (float)n; 
 } 
   
-// Driver code 
+
 int main() 
 { 
-	int n;
-	cout << "Enter n:";
-	cin >> n;
-
-
-    struct Process p[n]; 
-    
-    cout << "Enter process details:\n";
-    for(int i=0;i<n;i++) {
-    	scanf("%d",&p[i].pid);
-		scanf("%d",&p[i].bt);
-		scanf("%d",&p[i].art);
-    }
+	Process proc[] = { { 1, 3, 4 }, { 2, 4, 2 }, 
+                    { 3, 5, 1 }, { 4, 2, 6 }, { 5, 1, 8 }, { 6, 4, 4 } }; 
+    int n = sizeof(proc) / sizeof(proc[0]); 
   
-    findavgTime(p, n); 
+    findavgTime(proc, n); 
     return 0; 
 } 
+
